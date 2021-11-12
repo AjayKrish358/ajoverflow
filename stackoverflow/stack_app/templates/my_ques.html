@@ -1,0 +1,28 @@
+{% extends 'base_layout.html' %} {% block title %}Create Question {% endblock %} {% block body %}
+<div class="container" style="margin-top: 5%;">
+    {% if a %}
+
+    <h1 class="text-center">Questions posted by you ({{user}}).</h1>
+
+    {% for question in a %}
+    <div class="card border-light shadow my-5 py-3">
+
+        <div class="card-body">
+            <h3 class="card-title">{{question.question}}</h3>
+            <div class="clearfix">
+                <h6 class="card-subtitle mb-2 text-muted float-right">Asked on {{question.date}}</h6>
+            </div>
+            <a href="{% url 'stack_app:question' ques=question.slug %}" class="btn btn-dark stretched-link d-block mx-auto w-25 my-3">Go to question</a>
+        </div>
+    </div>
+
+
+
+    {% endfor %}
+    </tbody>
+    </table>
+    {% else %}
+    <h2>You haven't posted questions yet!</h2>
+    <a class="btn btn-dark hover-btn" href="{% url 'stack_app:create' %}">Ask a  Question!</a>{% endif %}
+</div>
+{% endblock %} {% block script %}{% endblock %}

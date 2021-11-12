@@ -1,0 +1,42 @@
+{% extends 'base_layout.html' %} {% block title %} Signup {% endblock %} {% block body %}
+<div class="fluid-container" style="margin-top: 5%;">
+    <h1 class="text-center">Signup</h1>
+    <div class="row">
+
+        <div class="col-sm-6 offset-sm-3 col-9 offset-1">
+            <div>
+                <form method="POST" class="border border-light rounded shadow mx-auto my-5 py-5 px-5" action="{% url 'stack_app:signup' %} ">
+                    {% csrf_token %}
+                    <div class="form-group clearfix my-5">
+
+                        <div class="col-sm-10 col-lg-8 d-block mx-auto col-11">
+                            {{ form.username }}
+                        </div>
+                    </div>
+                    <div class="form-group clearfix my-5">
+                        <div class="col-sm-10 col-lg-8 d-block mx-auto col-11">
+                            {{ form.email }}
+                        </div>
+                    </div>
+                    <div class="form-group clearfix my-5">
+                        <div class="col-sm-10 col-lg-8 d-block mx-auto col-11">
+                            {{ form.password }}
+                        </div>
+                    </div>
+                    <div class="form-group clearfix my-5">
+                        <div class="col-sm-10 col-lg-8 d-block mx-auto col-11">
+                            {{ form.password_repeat }}
+                        </div>
+                    </div>
+                    {% if error_message %}
+                    <div class="alert alert-danger col-sm-10 col-lg-8 d-block mx-auto col-11" role="alert">
+                        {{ error_message }}
+                    </div>
+                    {% endif %}
+                    <button type="submit" id="login-btn" class="my-2 py-2 btn btn-dark mx-auto d-block ">Submit</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %} {% block script %}{% endblock %}
